@@ -8,7 +8,7 @@ Update this file whenever the current phase, active feature, or implementation s
 
 ## Current Goal
 
-- Extend the editor shell with the next scoped workspace feature unit.
+- Continue the protected editor implementation on top of authenticated route boundaries.
 
 ## Completed
 
@@ -16,6 +16,7 @@ Update this file whenever the current phase, active feature, or implementation s
 - Added workspace editor settings in `.vscode/settings.json` for save-time Biome formatting and import sorting, with `headwind.runOnSave` enabled for Tailwind class sorting if the Headwind VS Code extension is installed.
 - Feature unit `02-editor`: replaced the landing preview with an editor workspace shell, added the reusable top navbar and floating project sidebar components, and created an editor-specific dialog styling wrapper for future modal flows.
 - Moved the editor chrome into the shared app layout so the navbar and floating project sidebar persist around route content instead of being mounted by the home page alone.
+- Feature unit `03-auth`: installed `@clerk/ui`, wrapped the root layout with `ClerkProvider` using Clerk's `dark` theme plus token-based appearance overrides, added minimal sign-in and sign-up routes, protected the app with root `proxy.ts`, redirected `/` by auth state, moved the editor shell into a protected nested layout, and added Clerk's `UserButton` to the editor navbar.
 
 ## In Progress
 
@@ -23,7 +24,7 @@ Update this file whenever the current phase, active feature, or implementation s
 
 ## Next Up
 
-- Continue the editor implementation on top of the completed chrome foundation.
+- Continue the protected editor implementation on top of authenticated route boundaries.
 
 ## Open Questions
 
@@ -39,3 +40,5 @@ Update this file whenever the current phase, active feature, or implementation s
 - Tailwind class sorting in the workspace settings depends on the Headwind editor extension; Biome handles formatting and import organization directly.
 - The editor chrome currently opens with the project sidebar visible by default so the new overlay behavior is immediately visible during implementation review.
 - The root layout now wraps route content with the client editor shell, keeping shared chrome at the layout boundary while leaving individual pages responsible only for their own content.
+- Feature unit `03-auth` moves the editor chrome into a protected nested layout so auth screens can stay minimal and separate from the workspace shell.
+- Verified feature unit `03-auth` with a targeted Biome check for the touched files and an unrestricted `bun run build`; the repository-wide `bun run lint` still reports unrelated `.agents` skill files outside the app implementation scope.
