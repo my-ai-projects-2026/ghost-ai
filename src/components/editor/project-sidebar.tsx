@@ -36,16 +36,18 @@ export function ProjectSidebar({
   onClose,
   className,
 }: ProjectSidebarProps) {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <aside
-      aria-hidden={!isOpen}
       className={cn(
-        "pointer-events-none absolute top-5 left-5 bottom-5 z-20 w-[min(24rem,calc(100vw-2.5rem))] transition-transform duration-300 ease-out",
-        isOpen ? "translate-x-0" : "-translate-x-[calc(100%+2rem)]",
+        "absolute top-5 left-5 bottom-5 z-20 w-[min(24rem,calc(100vw-2.5rem))] transition-transform duration-300 ease-out translate-x-0",
         className,
       )}
     >
-      <div className="pointer-events-auto flex h-full flex-col rounded-3xl border border-surface-border bg-elevated/90 shadow-[0_24px_80px_rgb(0_0_0_/_0.42)] backdrop-blur-xl">
+      <div className="flex h-full flex-col rounded-3xl border border-surface-border bg-elevated/90 shadow-[0_24px_80px_rgb(0_0_0_/_0.42)] backdrop-blur-xl">
         <div className="flex items-center justify-between border-b border-surface-border px-5 py-4">
           <div>
             <h2 className="font-heading text-lg font-medium text-copy-primary">
